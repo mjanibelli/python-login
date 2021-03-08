@@ -28,12 +28,14 @@ def save_users(user, password):
 
 
 def signup():
+    """Create a new user."""
     new_user = input("Type your username: ")
     new_password = input("Type your password: ")
     save_users(new_user, new_password)
 
 
 def signin():
+    """Makes the login."""
     users = load_users()
     user_entry = input("Username: ")
 
