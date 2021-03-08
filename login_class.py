@@ -29,7 +29,12 @@ def save_user(user, password):
 
 def signup():
     """Create a new user."""
+    users = load_users()
     new_user = input("Type your username: ")
+    if users:
+        while new_user in users.keys():
+            print("This username is already in use! Try again.")
+            new_user = input("Type your username: ")
     new_password = input("Type your password: ")
     password_check = input("Type your password again: ")
     while password_check != new_password:
