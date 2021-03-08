@@ -37,17 +37,25 @@ def signup():
         new_password = input("Type your password: ")
         password_check = input("Type your password again: ")
     save_users(new_user, new_password)
-    print("Your account has been successfully saved!")
+    print("Your account has been successfully")
 
 
 def signin():
-    """Makes the login."""
+    """Sign in."""
     users = load_users()
+    chances = 3
     user_entry = input("Username: ")
 
     if user_entry in users.keys():
         password_entry = input("Password: ")
+        chances -= 1
+        while chances > 0 and password_entry != users[user_entry]:
+            print("Wrong password! Try again: ")
+            password_entry = input("Password: ")
+            chances -= 1
         if password_entry == users[user_entry]:
             print(f"Welcome back, {user_entry}!")
+        if chances == 0: 
+            print("You have exceeded the limit of login attempts.")
  
 
