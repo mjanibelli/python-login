@@ -3,7 +3,7 @@ filename = "login.json"
 
 
 def load_users():
-    """Loads users dict."""
+    """If the file exists, loads it and returns the users dict."""
     try:
         with open(filename) as file:
             info = json.load(file)
@@ -13,7 +13,7 @@ def load_users():
         return info
 
 
-def save_users(user, password):
+def save_user(user, password):
     """Save user's info. (Username and password.)."""
     users = load_users()
 
@@ -36,8 +36,8 @@ def signup():
         print("Passowords doesn't match! Try again.")
         new_password = input("Type your password: ")
         password_check = input("Type your password again: ")
-    save_users(new_user, new_password)
-    print("Your account has been successfully")
+    save_user(new_user, new_password)
+    print("Your account has been successfully created.")
 
 
 def signin():
