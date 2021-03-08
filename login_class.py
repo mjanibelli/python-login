@@ -31,7 +31,13 @@ def signup():
     """Create a new user."""
     new_user = input("Type your username: ")
     new_password = input("Type your password: ")
+    password_check = input("Type your password again: ")
+    while password_check != new_password:
+        print("Passowords doesn't match! Try again.")
+        new_password = input("Type your password: ")
+        password_check = input("Type your password again: ")
     save_users(new_user, new_password)
+    print("Your account has been successfully saved!")
 
 
 def signin():
