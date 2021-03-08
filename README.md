@@ -3,7 +3,7 @@
 Hey guys! 
 It's my first "real project" here in GitHub ^^
 I'm doing this to understand better how Git/GitHub works and to improve my skills.
-I'd be thankfull if you could help me to do this! :D
+I'd be thankful if you help me to do this! :D
 
 === About the project ===
 
