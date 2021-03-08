@@ -1,5 +1,4 @@
 # python-login
-Simple login system using python and json
 
 Hey guys! 
 It's my first "real project" here in GitHub ^^
