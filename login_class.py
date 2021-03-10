@@ -48,6 +48,7 @@ def input_new_password():
         return new_password
     return new_password
 
+
 def signup():
     """Create a new user."""
     new_user = input_new_username()
