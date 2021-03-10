@@ -27,20 +27,31 @@ def save_user(user, password):
             json.dump(users, file)
 
 
-def signup():
-    """Create a new user."""
+def input_new_username():
+    """Allows the username input and checks if it's already in use."""
     users = load_users()
     new_user = input("Type your username: ")
     if users:
         while new_user in users.keys():
             print("This username is already in use! Try again.")
             new_user = input("Type your username: ")
+    return new_user
+
+
+def input_new_password():
+    """Allows the password input and checks if it's valid or not."""
     new_password = input("Type your password: ")
     password_check = input("Type your password again: ")
-    while password_check != new_password:
-        print("Passowords doesn't match! Try again.")
-        new_password = input("Type your password: ")
-        password_check = input("Type your password again: ")
+    while password_check != new_password: 
+        print("Passwords doesn't match! Try again.")
+        input_new_password()
+        return new_password
+    return new_password
+
+def signup():
+    """Create a new user."""
+    new_user = input_new_username()
+    new_password = input_new_password()
     save_user(new_user, new_password)
     print("Your account has been successfully created.")
 
