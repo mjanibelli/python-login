@@ -1,4 +1,5 @@
 import json
+import re
 filename = "login.json"
 
 
@@ -34,7 +35,7 @@ def input_new_username():
     if users:
         while new_user in users.keys():
             print("This username is already in use! Try again.")
-            new_user = input("Type your username: ")
+            return input_new_username()
     return new_user
 
 
@@ -44,10 +45,9 @@ def input_new_password():
     password_check = input("Type your password again: ")
     while password_check != new_password: 
         print("Passwords doesn't match! Try again.")
-        input_new_password()
-        return new_password
+        return input_new_password()
     return new_password
-
+        
 
 def signup():
     """Create a new user."""
@@ -74,5 +74,3 @@ def signin():
             print(f"Welcome back, {user_entry}!")
         if chances == 0: 
             print("You have exceeded the limit of login attempts.")
- 
-
