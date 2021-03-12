@@ -94,3 +94,6 @@ def signin():
             print(f"Welcome back, {user_entry}!")
         if chances == 0: 
             print("You have exceeded the limit of login attempts.")
+    else:
+        print("This user isn't saved yet! Try again.")
+        
