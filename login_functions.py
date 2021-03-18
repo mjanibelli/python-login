@@ -1,5 +1,5 @@
-import json
-import re
+import json, re, bcrypt
+
 filename = "login.json"
 
 
@@ -63,7 +63,8 @@ def input_new_password():
         while password_check != new_password: 
             print("Passwords doesn't match! Try again.")
             return input_new_password()
-        return new_password
+        hashed_password = bcrypt.hashpw(new_password.encode("utf-8"), bcrypt.gensalt())
+        return hashed_password.decode("utf-8")
     else:
         print("Your password needs to be stronger! (At least 1 number, 1 capital letter and 1 special character)")
         return input_new_password()
@@ -86,14 +87,13 @@ def signin():
     if user_entry in users.keys():
         password_entry = input("Password: ")
         chances -= 1
-        while chances > 0 and password_entry != users[user_entry]:
+        while chances > 0 and not bcrypt.checkpw(password_entry.encode("utf-8"), users[user_entry].encode("utf-8")):
             print("Wrong password! Try again: ")
             password_entry = input("Password: ")
             chances -= 1
-        if password_entry == users[user_entry]:
+        if bcrypt.checkpw(password_entry.encode("utf-8"), users[user_entry].encode("utf-8")):
             print(f"Welcome back, {user_entry}!")
         if chances == 0: 
             print("You have exceeded the limit of login attempts.")
     else:
-        print("This user isn't saved yet! Try again.")
-        
+        print("This user doesn't exist! Try again.")
