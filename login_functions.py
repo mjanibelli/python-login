@@ -21,11 +21,11 @@ def save_user(user, password):
     if users:
         users[user] = password
         with open(filename, "w") as file:
-            json.dump(users, file)
+            json.dump(users, file, sort_keys=True, indent=4)
     else:
         users = {user:password}
         with open(filename, "w") as file:
-            json.dump(users, file)
+            json.dump(users, file, sort_keys=True, indent=4)
 
 
 def input_new_username():
