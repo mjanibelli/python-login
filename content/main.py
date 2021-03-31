@@ -8,10 +8,10 @@ while check[0].lower() != "y" and check[0].lower() != "n":
     check = input("Do you have an account?[y/n]: ")
 
 if check[0].lower() == "y":
-    if load_save.load_users():
-        signup_signin.signin()
+    if load_save.loadUsers():
+        signup_signin.signIn()
     else:
         print("No users have been saved yet. Try creating a new account.")
-        signup_signin.signup()
+        signup_signin.signUp()
 if check[0].lower() == "n":
-    signup_signin.signup()
+    signup_signin.signUp()

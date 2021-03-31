@@ -3,7 +3,7 @@ import json
 filename = "login.json"
 
 
-def load_users():
+def loadUsers():
     """If the file exists, loads it and returns the users dict."""
     try:
         with open(filename) as file:
@@ -14,9 +14,9 @@ def load_users():
         return info
     
 
-def save_user(user, password):
+def saveUser(user, password):
     """Save user's info. (Username and password.)."""
-    users = load_users()
+    users = loadUsers()
 
     if users:
         users[user] = password

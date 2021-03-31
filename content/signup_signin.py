@@ -2,17 +2,17 @@ import bcrypt
 import load_save, inputs
 
 
-def signup():
+def signUp():
     """Create a new user."""
-    new_user = inputs.input_new_username()
-    new_password = inputs.input_new_password()
-    load_save.save_user(new_user, new_password)
+    new_user = inputs.inputNewUsername()
+    new_password = inputs.inputNewPassword()
+    load_save.saveUser(new_user, new_password)
     print("Your account has been successfully created.")
 
 
-def signin():
+def signIn():
     """Sign in."""
-    users = load_save.load_users()
+    users = load_save.loadUsers()
     chances = 3
     user_entry = input("Username: ")
 
