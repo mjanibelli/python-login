@@ -1,8 +1,8 @@
 import re, bcrypt
-from load_save import loadUsers
+from load_save import load_users
 
 
-def checkPassword(password):
+def check_password(password):
     """Checks if the password is safe enough (At least 1 number, 1 capital letter and 1 special character)."""
     cap_letter_regex = re.compile(r"[A-Z]+")
     cap_letter_found = re.search(cap_letter_regex, password)
@@ -19,29 +19,30 @@ def checkPassword(password):
         return False
 
 
-def inputNewUsername():
+def input_new_username():
     """Allows the username input and checks if it's already in use."""
-    users = loadUsers()
+    users = load_users()
     new_user = input("Type your username: ")
 
     if users:
         while new_user in users.keys():
             print("This username is already in use! Try again.")
-            return inputNewUsername()
+            return input_new_username()
     return new_user
 
 
-def inputNewPassword():
+def input_new_password():
     """Allows the password input and checks if it's valid or not."""
     new_password = input("Type your password: ")
 
-    if checkPassword(new_password):
+    if check_password(new_password):
         password_check = input("Type your password again: ")
         while password_check != new_password: 
             print("Passwords doesn't match! Try again.")
-            return inputNewPassword()
+            return input_new_password()
         hashed_password = bcrypt.hashpw(new_password.encode("utf-8"), bcrypt.gensalt())
         return hashed_password.decode("utf-8")
     else:
         print("Your password needs to be stronger! (At least 1 number, 1 capital letter and 1 special character)")
-        return inputNewPassword()
+        return input_new_password()
+        

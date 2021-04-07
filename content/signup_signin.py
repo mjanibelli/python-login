@@ -2,17 +2,17 @@ import bcrypt
 import load_save, inputs
 
 
-def signUp():
+def sign_up():
     """Create a new user."""
-    new_user = inputs.inputNewUsername()
-    new_password = inputs.inputNewPassword()
-    load_save.saveUser(new_user, new_password)
+    new_user = inputs.input_new_username()
+    new_password = inputs.input_new_password()
+    load_save.save_user(new_user, new_password)
     print("Your account has been successfully created.")
 
 
-def signIn():
+def sign_in():
     """Sign in."""
-    users = load_save.loadUsers()
+    users = load_save.load_users()
     chances = 3
     user_entry = input("Username: ")
 
@@ -29,3 +29,4 @@ def signIn():
             print("You have exceeded the limit of login attempts.")
     else:
         print("This user doesn't exist! Try again.")
+        
