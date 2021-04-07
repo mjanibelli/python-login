@@ -10,3 +10,5 @@ I'd be thankful if you help me to do this! :D
 
 It's just a login system that I've made weeks ago but now I'm trying to send it to GitHub and improve it in the process.
 If you have some question or suggestion about it, feel free to open an issue! :)
+
+Libs: [Bcrypt](https://pypi.org/project/bcrypt/), [Json](https://docs.python.org/3/library/json.html), [Re](https://docs.python.org/3/library/re.html). 
