@@ -23,7 +23,6 @@ def save_user(user, password):
         with open(filename, "w") as file:
             json.dump(users, file, sort_keys=True, indent=4)
     else:
-        users = {user:password}
+        users = {user: password}
         with open(filename, "w") as file:
             json.dump(users, file, sort_keys=True, indent=4)
-            

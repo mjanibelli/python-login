@@ -1,4 +1,7 @@
-import re, bcrypt
+import re
+
+import bcrypt
+
 from load_save import load_users
 
 
@@ -25,9 +28,11 @@ def input_new_username():
     new_user = input("Type your username: ")
 
     if users:
+        
         while new_user in users.keys():
             print("This username is already in use! Try again.")
             return input_new_username()
+
     return new_user
 
 
@@ -37,12 +42,13 @@ def input_new_password():
 
     if check_password(new_password):
         password_check = input("Type your password again: ")
+
         while password_check != new_password: 
             print("Passwords doesn't match! Try again.")
             return input_new_password()
+
         hashed_password = bcrypt.hashpw(new_password.encode("utf-8"), bcrypt.gensalt())
         return hashed_password.decode("utf-8")
     else:
         print("Your password needs to be stronger! (At least 1 number, 1 capital letter and 1 special character)")
         return input_new_password()
-        
